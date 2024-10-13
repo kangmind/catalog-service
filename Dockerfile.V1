@@ -1,0 +1,17 @@
+FROM eclipse-temurin:17
+LABEL authors="yangkang"
+WORKDIR workspace
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} catalog-service.jar
+ENTRYPOINT ["java", "-jar", "catalog-service.jar"]
+
+# docker network create catalog-network
+# docker network ls
+# docker run -d --name polar-postgres --net catalog-network -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=polardb_catalog -p 5432:5432 postgres:14.4
+# docker build -t catalog-service .
+# or
+# docker build -t catalog-service .
+# 一起运行
+# docker build -t catalog-service . && docker run -d --name catalog-service --net catalog-network -p 9001:9001 -e SPRING_DATASOURCE_URL=jdbc:postgresql://polar-postgres:5432/polardb_catalog -e SPRING_PROFILES_ACTIVE=test-data catalog-service
+# 关闭清理
+# docker rm -f catalog-service polar-postgres

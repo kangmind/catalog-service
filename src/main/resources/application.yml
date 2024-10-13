@@ -1,0 +1,48 @@
+server:
+  port: 9001
+  tomcat:
+    connection-timeout: 3s
+    keep-alive-timeout: 15s
+    threads:
+      max: 200
+      min-spare: 5
+
+polar:
+  greeting: Welcome to the local book catalog!
+spring:
+  flyway:
+    baseline-on-migrate: true
+  #  使用flyway所以关闭
+  #  sql:
+  #    init:
+  #      mode: always
+  datasource:
+    username: user
+    password: password
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+  application:
+    name: catalog-service
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+      request-connect-timeout: 5000
+      request-read-timeout: 5000
+      #要在本地环境将其作为可选服务的话，不要忘记将fail-fast属性重置回false
+      fail-fast: false
+      retry:
+        max-attempts: 6
+        initial-interval: 1000
+        max-interval: 2000
+        #计算下一次重试的间隔
+        multiplier: 1.1
+management:
+  endpoint:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
