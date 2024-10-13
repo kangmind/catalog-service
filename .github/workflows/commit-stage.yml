@@ -69,7 +69,7 @@ jobs:
           chmod +x mvn
           ./mvnw spring-boot:build-image \
           -Ddocker.registry.username=kangmind \
-          -Ddocker.registry.password=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 \
+          -Ddocker.registry.password=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 \
           -Ddocker.registry.protocol=https \
           -Ddocker.registry.url=ghcr.io \
           -Dimage.name=catalog-service \
