@@ -60,17 +60,20 @@ docker system prune -f
 -DskipTests \
 -Dspring-boot.build-image.publish=true
 
-注意：不要显示指定 -Dimage.tag=:latest 否则镜像仓库不覆盖该镜像，但是第一次可以推送
+注意：~~不要显示指定 -Dimage.tag=:latest 否则镜像仓库不覆盖该镜像，但是第一次可以推送~~ 最好删除已推送的
 
 ./mvnw spring-boot:build-image \
 -Ddocker.registry.username=kangmind \
--Ddocker.registry.password=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 \
+-Ddocker.registry.password=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 \
 -Ddocker.registry.protocol=https \
 -Ddocker.registry.url=ghcr.io \
 -Dimage.name=catalog-service \
 -Dimage.tag= \
 -DskipTests \
 -Dspring-boot.build-image.publish=true
+
+
+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
 
 
 
