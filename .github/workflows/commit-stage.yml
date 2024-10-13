@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: read
+      packages: write
       security-events: write
     steps:
       # 检出代码
@@ -87,5 +88,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: kangmind
           password: ${{ secrets.GHCR_TOKEN }}
+      - name: Check Docker login status
+        run: docker info
       - name: Publish container image
         run: docker push ${{ env.REGISTRY }}/kangmind/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
