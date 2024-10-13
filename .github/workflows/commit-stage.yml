@@ -1,6 +1,12 @@
 name: Commit Stage
 on: push
 
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: kangmind/catalog-service
+  VERSION: latest
+
 jobs:
   build:
     name: Build and Test
@@ -23,7 +29,7 @@ jobs:
 
       # 使用 Maven 构建项目并运行单元测试与集成测试
       - name: Build, unit tests and integration tests
-        run: mvn clean package -Dskip-test=true
+        run: mvn clean package -DskipTests=true
 
 #      # 代码漏洞扫描
 #      - name: Code vulnerability scanning
