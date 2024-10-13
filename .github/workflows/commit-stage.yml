@@ -67,13 +67,13 @@ jobs:
       - name: Build container image
         run: |
           mvn spring-boot:build-image \
-          -DskipTests=true -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          -DskipTests=true -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/kangmind/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
 
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
         with:
-          image: ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          image: ${{ env.REGISTRY }}/kangmind/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
           fail-build: false
           severity-cutoff: high
 #      - name: Upload vulnerability report
@@ -85,7 +85,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
+          username: kangmind
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish container image
-        run: docker push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+        run: docker push ${{ env.REGISTRY }}/kangmind/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
