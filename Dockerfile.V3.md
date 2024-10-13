@@ -41,7 +41,7 @@ docker system prune -f
 
 ./mvnw spring-boot:build-image \
 -Ddocker.registry.username=kangmind \
--Ddocker.registry.password=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 \
+-Ddocker.registry.password=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 \
 -Ddocker.registry.protocol=https \
 -Ddocker.registry.url=ghcr.io \
 -Dimage.name=catalog-service \
@@ -53,7 +53,7 @@ docker system prune -f
 
 ./mvnw spring-boot:build-image \
 -Ddocker.registry.username=kangmind \
--Ddocker.registry.password=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 \
+-Ddocker.registry.password=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 \
 -Ddocker.registry.protocol=https \
 -Ddocker.registry.url=ghcr.io \
 -Dimage.name=catalog-service \
@@ -64,7 +64,7 @@ docker system prune -f
 
 ./mvnw spring-boot:build-image \
 -Ddocker.registry.username=kangmind \
--Ddocker.registry.password=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 \
+-Ddocker.registry.password=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 \
 -Ddocker.registry.protocol=https \
 -Ddocker.registry.url=ghcr.io \
 -Dimage.name=catalog-service \
@@ -73,7 +73,7 @@ docker system prune -f
 -Dspring-boot.build-image.publish=true
 
 
-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
+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
 
 
 
