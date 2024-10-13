@@ -21,7 +21,7 @@
         <testcontainers.version>1.20.2</testcontainers.version>
         <!-- 不安全 命令行执行覆盖 见V3.md -->
         <docker.registry.username>kangmind</docker.registry.username>
-        <docker.registry.password>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</docker.registry.password>
+        <docker.registry.password>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</docker.registry.password>
         <docker.registry.protocol>https</docker.registry.protocol>
         <docker.registry.url>ghcr.io</docker.registry.url>
         <image.name>${project.name}</image.name>
