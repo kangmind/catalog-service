@@ -9,18 +9,23 @@ jobs:
       contents: read
       security-events: write
     steps:
+      # 检出代码
       - name: Checkout source code
         uses: actions/checkout@v4
+
+      # 设置 JDK 环境和 Maven
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
-          cache: maven
+          cache: maven  # 使用 Maven 的缓存
+
+      # 使用 Maven 构建项目并运行单元测试与集成测试
       - name: Build, unit tests and integration tests
-        run: |
-          chmod +x gradlew
-          ./maven clean package
+        run: mvn clean package
+
+      # 代码漏洞扫描
       - name: Code vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
@@ -28,6 +33,8 @@ jobs:
           path: "${{ github.workspace }}"
           fail-build: false
           severity-cutoff: high
+
+      # 上传漏洞报告
       - name: Upload vulnerability report
         uses: github/codeql-action/upload-sarif@v3
         if: success() || failure()
