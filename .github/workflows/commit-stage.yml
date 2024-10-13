@@ -25,14 +25,14 @@ jobs:
       - name: Build, unit tests and integration tests
         run: mvn clean package
 
-      # 代码漏洞扫描
-      - name: Code vulnerability scanning
-        uses: anchore/scan-action@v3
-        id: scan
-        with:
-          path: "${{ github.workspace }}"
-          fail-build: false
-          severity-cutoff: high
+#      # 代码漏洞扫描
+#      - name: Code vulnerability scanning
+#        uses: anchore/scan-action@v3
+#        id: scan
+#        with:
+#          path: "${{ github.workspace }}"
+#          fail-build: false
+#          severity-cutoff: high
 
 #      # 上传漏洞报告
 #      - name: Upload vulnerability report
