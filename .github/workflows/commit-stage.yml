@@ -66,10 +66,10 @@ jobs:
           cache: maven
       - name: Build container image
         run: |
-          chmod +x mvn
+          chmod +x mvnw
           ./mvnw spring-boot:build-image \
           -Ddocker.registry.username=kangmind \
-          -Ddocker.registry.password=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 \
+          -Ddocker.registry.password=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 \
           -Ddocker.registry.protocol=https \
           -Ddocker.registry.url=ghcr.io \
           -Dimage.name=catalog-service \
